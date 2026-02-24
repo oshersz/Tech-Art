@@ -11,15 +11,16 @@ public class CardReflection : MonoBehaviour
     {
         //refMaterial = GetComponent<Renderer>().material;
         refMaterial = GetComponent<Image>().material;
+        refMaterial.SetFloat("_Brightness", 0);
     }
 
     void Update()
     {
         if (effectActive)
         {
-            brightness *= (1 - (Time.deltaTime * 5));
+            brightness *= (1 - (Time.deltaTime * 15)); //5
             refMaterial.SetFloat("_Brightness", brightness);
-            if (brightness<0.05f)
+            if (brightness<0.01f)
             {
                 effectActive = false;
                 refMaterial.SetFloat("_Brightness", 0);
@@ -29,7 +30,7 @@ public class CardReflection : MonoBehaviour
 
     public void CardHightlight()
     {
-        brightness = 5;
+        brightness = 15; //5
         refMaterial.SetFloat("_Brightness", brightness);
         effectActive = true;
     }
