@@ -28,15 +28,17 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     }
     void Update()
     {
+        
         if (cardFlipped)
         {
             YRotCalc = (0.5f - MouseBehaviour.Singleton.mouseXPositionPercent) * 50;
             XRotCalc = (0.5f - MouseBehaviour.Singleton.mouseYPositionPercent) * 50;
 
-            transform.rotation = Quaternion.Euler(XRotCalc, -YRotCalc, 0); //inverted Y
+            //transform.rotation = Quaternion.Euler(XRotCalc, -YRotCalc, 0); //inverted Y
             sparkleEffect.transform.rotation = transform.rotation;
             cardHighlight.transform.rotation = transform.rotation;
         }
+        
 
         //MouseHoverSparkle();
         //MouseMoveSparkle();
