@@ -7,11 +7,19 @@ public class CardReflection : MonoBehaviour
     private Material refMaterial;
     private float brightness;
     private bool effectActive;
+
+    private Image image;
     void Start()
     {
         //refMaterial = GetComponent<Renderer>().material;
-        refMaterial = GetComponent<Image>().material;
+        //refMaterial = GetComponent<Image>().material;
+
+        image = GetComponent<Image>();
+        image.material = new Material(image.material);
+        refMaterial = image.material;
+
         refMaterial.SetFloat("_Brightness", 0);
+
     }
 
     void Update()

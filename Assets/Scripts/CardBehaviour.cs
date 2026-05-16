@@ -19,7 +19,12 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     [SerializeField] CardReflection cardRef;
     private Animator anim;
 
-    private bool cardFlipped;
+    public bool cardFlipped;
+
+    public string cardName;
+    public int cost;
+    //public int attack;
+    //public int health;
 
     void Start()
     {
@@ -92,6 +97,8 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         if (cardFlipped)
         {
             cardHighlight.enabled = true;
+
+            CardManager.sigleton.selectedCard = this;
         }
 
         //transform.localScale = Vector3.one * 1.25f;
@@ -104,6 +111,8 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
             sparkleEffect.Play();
             cardRef.CardHightlight();
             cardHighlight.enabled = false; //overlapping makes it look weird
+
+            CardManager.sigleton.AddToDeck(this);
         }
         else
         {
@@ -122,6 +131,11 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         if (cardFlipped)
         {
             cardHighlight.enabled = false;
+
+            if (CardManager.sigleton.selectedCard == this)
+            {
+                CardManager.sigleton.selectedCard = null;
+            }
         }
         //transform.localScale = Vector3.one;
         //sparkleEffect.gameObject.SetActive(false);
