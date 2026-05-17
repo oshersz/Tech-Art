@@ -16,6 +16,9 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private Color glow;
     private float glowVariance;
 
+    [HideInInspector]public bool zoomInCard;
+    [HideInInspector]public Vector3 startingPos;
+
     void Start()
     {
         //anim = GetComponent<Animator>();
@@ -50,7 +53,7 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!effectActive)
+        if (!effectActive && !zoomInCard)
         {
             spriteMaterial.SetFloat("_Thickness", 0.02f);
             spriteMaterial.SetColor("_Color", Color.white);
@@ -58,19 +61,34 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        sparkle.transform.position = transform.position;
-        sparkle.Play();
+        if (eventData.button == PointerEventData.InputButton.Left && !zoomInCard)
+        {
+            sparkle.transform.position = transform.position;
+            sparkle.Play();
 
-        //dotween later
-        effectActive = true;
-        spriteMaterial.SetFloat("_Thickness", 0.02f);
-        glow = new Color(0.625f, 0.625f, 1, 1); //(0.015f, 0.1f, 0.75f, 1)
-        glowVariance = 6;
-        glow = glow *glowVariance;
-        spriteMaterial.SetColor("_Color",glow);
-        spriteMaterial.SetFloat("_Brightness", glowVariance/6);
+            //dotween later
+            effectActive = true;
+            spriteMaterial.SetFloat("_Thickness", 0.02f);
+            glow = new Color(0.625f, 0.625f, 1, 1); //(0.015f, 0.1f, 0.75f, 1)
+            glowVariance = 6;
+            glow = glow * glowVariance;
+            spriteMaterial.SetColor("_Color", glow);
+            spriteMaterial.SetFloat("_Brightness", glowVariance / 6);
 
-        CardManager.sigleton.AddToDeck(this);
+            CardManager.sigleton.AddToDeck(this);
+        }
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (zoomInCard)
+            {
+                CardManager.sigleton.ZoomOutOfCard(this);
+            }
+            else
+            {
+                CardManager.sigleton.ZoomInOnCard(this);
+            }
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)

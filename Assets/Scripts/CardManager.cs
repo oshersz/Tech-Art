@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+using DG.Tweening;
 
 public class CardManager : MonoBehaviour
 {
@@ -10,10 +12,24 @@ public class CardManager : MonoBehaviour
     public GameObject emptyUIPrefab;
     public Transform deckList;
     public Transform canvas;
+    public Transform onTopCanvas;
+    public Transform center;
+    public Volume zoomInPost;
     public CardBehaviour selectedCard;
+
+    public GameObject slaveObject;
+    private bool slaveBool;
     private void Awake()
     {
         sigleton = this;
+    }
+
+    private void Update()
+    {
+        if (slaveBool)
+        {
+            zoomInPost.weight = slaveObject.transform.localScale.x;
+        }
     }
 
     public void AddToDeck(CardBehaviour card)
@@ -79,5 +95,40 @@ public class CardManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void ZoomInOnCard(CardScript card)
+    {
+        canvas.GetComponent<GraphicRaycaster>().enabled = false;
+
+        GameObject dupliCard = Instantiate(card.gameObject, card.transform.position, Quaternion.identity, onTopCanvas);
+
+        dupliCard.GetComponent<CardScript>().zoomInCard = true;
+        dupliCard.GetComponent<CardScript>().startingPos = card.transform.position;
+
+        dupliCard.transform.DOMove(center.position, 0.5f).SetEase(Ease.OutCubic);
+        dupliCard.transform.DOScale(1.5f,0.5f).SetEase(Ease.OutCubic);
+        //dupliCard.transform.localScale *= 1.5f;
+
+        //some whacky shit, hope this works
+        slaveObject.transform.DOScale(1, 0.5f);
+        slaveBool = true;
+        //zoomInPost.weight = center.localScale.x;
+        //zoomInPost.weight = 1;
+    }
+
+    public void ZoomOutOfCard(CardScript card)
+    {
+        canvas.GetComponent<GraphicRaycaster>().enabled = true;
+        //dupliCard.transform.position = center.position;
+        //dupliCard.transform.localScale *= 1.5f;
+        card.transform.DOMove(card.startingPos, 0.5f).SetEase(Ease.OutCubic);
+        card.transform.DOScale(1f, 0.5f).SetEase(Ease.OutCubic);
+
+        Destroy(card.gameObject,0.5f);
+
+        slaveObject.transform.DOScale(0, 0.5f).OnComplete(() => { slaveBool = false; });
+
+        //zoomInPost.weight = 0;
     }
 }

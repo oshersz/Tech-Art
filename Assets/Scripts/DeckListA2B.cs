@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DeckListA2B : MonoBehaviour
 {
@@ -42,12 +43,16 @@ public class DeckListA2B : MonoBehaviour
         backgroundMaterial.SetFloat("_Brightness", 0.125f);
         manaMaterial.SetFloat("_Brightness", 0.125f);
 
+
+        transform.DOMove(Destination, 1).SetEase(Ease.OutCubic);
     }
 
     void Update()
     {
-        _easedTimer = Mathf.SmoothStep(0, 1, (Time.time - _timer) * _flySpeed);
-        transform.position = Vector3.Lerp(_startingPosition, Destination, _easedTimer);
+        //old way
+        //_easedTimer = Mathf.SmoothStep(0, 1, (Time.time - _timer) * _flySpeed);
+        //transform.position = Vector3.Lerp(_startingPosition, Destination, _easedTimer);
+
         if (Vector3.Distance(transform.position, Destination) < 0.1f  && !arrived)
         {
             particles.transform.parent = null;
