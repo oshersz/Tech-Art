@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 871fe04dc3d04cd4e81d9f138f2265f3
+guid: 90b5bbf526bcd0e4fb7cc2838c65de98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2580959875235092072
-    second: 300px-AT_060_0
+      213: -1916378618134650111
+    second: Card-Example-4(16-5-2026-19_29)_0
+  - first:
+      213: -6848895531050960469
+    second: Card-Example-4(16-5-2026-19_29)_1
+  - first:
+      213: -6693486271926486160
+    second: Card-Example-4(16-5-2026-19_29)_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 300px-AT_060_0
+      name: Card-Example-4(16-5-2026-19_29)_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 19
-        width: 240
-        height: 338
+        x: 3
+        y: 209
+        width: 13
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89963110ba69e2cd0800000000000000
-      internalID: -2580959875235092072
+      spriteID: 1032eeadcc7a765e0800000000000000
+      internalID: -1916378618134650111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card-Example-4(16-5-2026-19_29)_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 760
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba972ff2dc5d3f0a0800000000000000
+      internalID: -6848895531050960469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card-Example-4(16-5-2026-19_29)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 178
+        width: 7
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07b3ed403b5fb13a0800000000000000
+      internalID: -6693486271926486160
       vertices: []
       indices: 
       edges: []
@@ -161,7 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      300px-AT_060_0: -2580959875235092072
+      Card-Example-4(16-5-2026-19_29)_0: -1916378618134650111
+      Card-Example-4(16-5-2026-19_29)_1: -6848895531050960469
+      Card-Example-4(16-5-2026-19_29)_2: -6693486271926486160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 871fe04dc3d04cd4e81d9f138f2265f3
+guid: 4166722ba6d7b624cb5211fefb2b050f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2580959875235092072
-    second: 300px-AT_060_0
+      213: 7992302202219167811
+    second: Mana Crystal_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 300px-AT_060_0
+      name: Mana Crystal_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 19
-        width: 240
-        height: 338
+        x: 6
+        y: 11
+        width: 117
+        height: 105
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89963110ba69e2cd0800000000000000
-      internalID: -2580959875235092072
+      spriteID: 34088d4028c5aee60800000000000000
+      internalID: 7992302202219167811
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      300px-AT_060_0: -2580959875235092072
+      Mana Crystal_0: 7992302202219167811
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

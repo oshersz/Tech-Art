@@ -15,15 +15,6 @@ public class CardManager : MonoBehaviour
     {
         sigleton = this;
     }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void AddToDeck(CardBehaviour card)
     {
@@ -47,6 +38,30 @@ public class CardManager : MonoBehaviour
             //deckCard.transform.Find("Cost").GetComponent<TextMeshProUGUI>().text = ""+ card.cost;
 
             deckCard.transform.Find("Outer Mana Crystal").GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + card.cost; //horrible code
+        }
+
+    }
+
+    public void AddToDeck(CardScript card)
+    {
+        if (deckList.childCount < 8)
+        {
+            GameObject placeHolder = Instantiate(emptyUIPrefab, deckList);
+            placeHolder.name = "placeholder";
+            LayoutRebuilder.ForceRebuildLayoutImmediate(deckList.GetComponent<RectTransform>());
+
+            GameObject a2bEffect = Instantiate(deckCardEffect, card.transform.position, Quaternion.identity, canvas);
+            a2bEffect.GetComponent<DeckListA2B>().Destination = placeHolder.transform.position;
+
+            a2bEffect.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = card.cardName;
+
+            a2bEffect.transform.Find("Outer Mana Crystal").GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + card.cost; //horrible code
+
+            GameObject deckCard = Instantiate(deckCardPrefab, deckList);
+
+            deckCard.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = card.cardName;
+
+            deckCard.transform.Find("Outer Mana Crystal").GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + card.cost; //horrible code
         }
 
     }
