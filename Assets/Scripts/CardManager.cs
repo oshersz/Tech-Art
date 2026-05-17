@@ -44,7 +44,7 @@ public class CardManager : MonoBehaviour
 
     public void AddToDeck(CardScript card)
     {
-        if (deckList.childCount < 8)
+        if (deckList.childCount < 9)
         {
             GameObject placeHolder = Instantiate(emptyUIPrefab, deckList);
             placeHolder.name = "placeholder";

@@ -27,6 +27,7 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         spriteMaterial.SetFloat("_Thickness", 0);
         spriteMaterial.SetColor("_Color", Color.black);
+        spriteMaterial.SetFloat("_Brightness", 0);
     }
 
     void Update()
@@ -36,11 +37,13 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             glowVariance *= (1 - (Time.deltaTime * 9));
             glow = new Color(0.625f, 0.625f, 1, 1) * glowVariance;
             spriteMaterial.SetColor("_Color", glow);
+            spriteMaterial.SetFloat("_Brightness", glowVariance / 6);
             if (glowVariance < 0.01f)
             {
                 effectActive = false;
                 spriteMaterial.SetFloat("_Thickness", 0);
                 spriteMaterial.SetColor("_Color", Color.black);
+                spriteMaterial.SetFloat("_Brightness", 0);
             }
         }
     }
@@ -65,6 +68,7 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         glowVariance = 6;
         glow = glow *glowVariance;
         spriteMaterial.SetColor("_Color",glow);
+        spriteMaterial.SetFloat("_Brightness", glowVariance/6);
 
         CardManager.sigleton.AddToDeck(this);
     }
@@ -75,6 +79,7 @@ public class CardScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             spriteMaterial.SetFloat("_Thickness", 0);
             spriteMaterial.SetColor("_Color", Color.black);
+            spriteMaterial.SetFloat("_Brightness", 0);
         }
     }
 }

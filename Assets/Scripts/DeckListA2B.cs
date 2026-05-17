@@ -39,6 +39,8 @@ public class DeckListA2B : MonoBehaviour
         backgroundMaterial.SetColor("_Color", glow);
         manaMaterial.SetFloat("_Thickness", 0.02f);
         manaMaterial.SetColor("_Color", glow);
+        backgroundMaterial.SetFloat("_Brightness", 0.125f);
+        manaMaterial.SetFloat("_Brightness", 0.125f);
 
     }
 
@@ -51,7 +53,7 @@ public class DeckListA2B : MonoBehaviour
             particles.transform.parent = null;
             particles.transform.localScale = Vector3.one;
             particles.Stop();
-            Destroy(particles, 2);
+            Destroy(particles.gameObject, 2);
             Destroy(gameObject,2);
             CardManager.sigleton.UpdateDeck();
 

@@ -105,18 +105,27 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (cardFlipped)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            sparkleEffect.transform.position = transform.position;
-            sparkleEffect.Play();
-            cardRef.CardHightlight();
-            cardHighlight.enabled = false; //overlapping makes it look weird
+            if (cardFlipped)
+            {
+                sparkleEffect.transform.position = transform.position;
+                sparkleEffect.Play();
+                cardRef.CardHightlight();
+                cardHighlight.enabled = false; //overlapping makes it look weird
 
-            CardManager.sigleton.AddToDeck(this);
+                CardManager.sigleton.AddToDeck(this);
+            }
+            else
+            {
+                anim.SetTrigger("Flip");
+            }
         }
-        else
+
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
-            anim.SetTrigger("Flip");
+            //card zoom in
+
         }
     }
 
